@@ -1,11 +1,11 @@
 const testData = [
     {
-        firstName: 'Timur',
-        lastName: 'Murtukov',
-        email: 'murtukov@gmail.com',
+        firstName: 'Alfred',
+        lastName: 'Hitchcock',
+        email: 'a.hitchcock@mail.com',
         skills: ['English', 'Table Service'],
         todos: ['check-time', 'do-this', 'do-that'],
-        location: 'Berlin'
+        location: 'New York'
     },
     {
         firstName: 'Albert',
@@ -24,10 +24,10 @@ const testData = [
         location: 'Berlin'
     },
     {
-        firstName: 'Timur',
-        lastName: 'Murtukov',
-        email: 'murtukov@gmail.com',
-        skills: ['English', 'Table Service'],
+        firstName: 'John',
+        lastName: 'Wick',
+        email: 'killer@doglover.com',
+        skills: ['English', 'Russian', 'Assassination'],
         todos: ['check-time', 'do-this', 'do-that'],
         location: 'Berlin'
     },
