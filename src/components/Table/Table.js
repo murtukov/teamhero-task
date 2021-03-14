@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import {createUseStyles} from "react-jss";
 import Header from "./Header";
+import {createUseStyles} from "react-jss";
 
 function Table({data, children}) {
     const classes = useStyles();
@@ -79,6 +79,7 @@ const useStyles = createUseStyles({
         fontFamily: "montserrat",
         color: '#444F5F',
         width: 1200,
+        overflow: 'hidden',
 
         '& td, th': {
             textAlign: "left",

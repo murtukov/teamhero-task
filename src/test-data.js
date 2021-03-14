@@ -2,8 +2,8 @@ const testData = [
     {
         firstName: 'Alfred',
         lastName: 'Hitchcock',
-        email: 'a.hitchcock@mail.com',
-        skills: ['English', 'Table Service'],
+        email: 'a.hitchcock@hollywood.com',
+        skills: ['English', 'Directing'],
         todos: ['check-time', 'do-this', 'do-that'],
         location: 'New York'
     },
@@ -11,7 +11,7 @@ const testData = [
         firstName: 'Albert',
         lastName: 'Einstein',
         email: 'einstein@gmx.de',
-        skills: ['Deutsch', 'English', 'Physics'],
+        skills: ['Violin', 'Physics'],
         todos: ['check-time', 'do-this', 'do-that'],
         location: 'Berlin'
     },
@@ -19,7 +19,7 @@ const testData = [
         firstName: 'Timur',
         lastName: 'Murtukov',
         email: 'murtukov@gmail.com',
-        skills: ['English', 'Table Service'],
+        skills: ['React', 'Symfony'],
         todos: ['check-time', 'do-this', 'do-that'],
         location: 'Berlin'
     },
