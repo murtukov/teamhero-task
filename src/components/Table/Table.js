@@ -1,48 +1,24 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import Header from "./Header";
-import {createUseStyles} from "react-jss";
+import React, {} from 'react';
+import Header from "./Header/Header";
+import {useTableData} from "./TableProvider";
+import styles from './styles.module.css';
 
-function Table({data, children}) {
-    const classes = useStyles();
+function Table({children}) {
+    const data    = useTableData();
     const columns = createMapping(children);
-    const [rows, updateRows] = useState(data);
-    const [sortOptions, updateSortOptions] = useState(null);
-
-    const sorter = useCallback((a, b) => {
-        if (a[sortOptions.source] < b[sortOptions.source]) {
-            return sortOptions.order === 'desc' ? -1 : 1;
-        }
-        if (a[sortOptions.source] > b[sortOptions.source]) {
-            return sortOptions.order === 'desc' ? 1 : -1;
-        }
-        return 0;
-    }, [sortOptions]);
-
-    useEffect(() => {
-        if (sortOptions && sortOptions?.order) {
-            updateRows([...data].sort(sorter));
-        }
-    }, [sortOptions, data, sorter])
 
     return (
-        <table className={classes.root}>
+        <table className={styles.root}>
             <thead>
                 <tr>
                     {columns.map((entry, i) =>
-                        <Header
-                            source={entry.source}
-                            isSorting={sortOptions?.source === entry.source}
-                            sortHandler={updateSortOptions}
-                            key={i}
-                        >
-                            {entry.title}
-                        </Header>
+                        <Header entry={entry} key={i}/>
                     )}
                 </tr>
             </thead>
             <tbody>
-                {rows.map((row, i) =>
-                    <tr className={classes.row} key={i}>
+                {data.map((row, i) =>
+                    <tr className={styles.row} key={i}>
                         {columns.map((entry, j) =>
                             <entry.type
                                 data={row[entry.source]}
@@ -71,28 +47,5 @@ function createMapping(elements) {
         }
     });
 }
-
-const useStyles = createUseStyles({
-    root: {
-        borderCollapse: "collapse",
-        borderRadius: 10,
-        fontFamily: "montserrat",
-        color: '#444F5F',
-        width: 1200,
-        overflow: 'hidden',
-
-        '& td, th': {
-            textAlign: "left",
-            padding: 15,
-        }
-    },
-    row: {
-        backgroundColor: "white",
-        borderBottom: [1, 'solid', '#eaeaea'],
-        '&:last-child': {
-            borderBottom: 'none',
-        }
-    },
-});
 
 export default Table;

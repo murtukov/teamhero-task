@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {createUseStyles} from "react-jss";
 import {Icon} from "@blueprintjs/core";
+import styles from './styles.module.css';
 
 function TagFilter(props) {
-    const c = useStyles();
     const [tags, setTags] = useState([]);
     const [showInput, setShowInput] = useState(false);
 
@@ -12,14 +11,14 @@ function TagFilter(props) {
     }
 
     return (
-        <div className={c.root}>
-            <div className={c.header}>
+        <div className={styles.root}>
+            <div className={styles.header}>
                 Filter by skill
             </div>
-            <div className={c.tags}>
+            <div className={styles.tags}>
                 { tags.map(t => <Tag text={t}/>) }
                 { showInput && <Input/> }
-                <span className={c.addBtn} onClick={handleAddClick}>
+                <span className={styles.addBtn} onClick={handleAddClick}>
                     <Icon icon="add" color='#F2F4F9'/>
                 </span>
             </div>
@@ -35,8 +34,6 @@ const Tag = ({text}) => (
 );
 
 function Input() {
-    const c = useStyles();
-
     function handleKeypress(event) {
         if(event.key === 'Enter'){
             console.log('enter press here!')
@@ -46,41 +43,10 @@ function Input() {
     return (
         <input
             type='text'
-            className={c.input}
+            className={styles.input}
             onKeyPress={handleKeypress}
         />
     );
 }
-
-const useStyles = createUseStyles({
-    root: {
-        display: "flex",
-        flexDirection: "column"
-    },
-    header: {
-        textTransform: "uppercase",
-        fontSize: 13,
-        fontFamily: 'montserrat'
-    },
-    tags: {
-        display: "flex"
-    },
-    addBtn: {
-        backgroundColor: "#444F5F",
-        borderRadius: 3,
-        cursor: "pointer",
-        height: 18,
-        padding: [2, 3]
-    },
-    input: {
-        border: [1, 'solid', '#ccc'],
-        borderRadius: 5,
-        padding: 5,
-
-        '&:focus': {
-            border: "unset"
-        }
-    }
-});
 
 export default TagFilter;
