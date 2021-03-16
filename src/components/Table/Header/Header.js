@@ -1,28 +1,29 @@
 import React, {useState} from 'react';
-import {useFilter} from "../TableProvider";
-import styles from './styles.module.css';
+import {useSorting} from "../TableProvider";
+import {sorting} from "../../../common/constants";
+import s from './styles.module.css';
 
 const arrows = {
-    'desc': '▼',
-    'asc': '▲'
+    [sorting.DESC]: '▼',
+    [sorting.ASC]: '▲'
 };
 
 function Header({entry, ...props}) {
     const [sortOrder, updateSortOrder] = useState(null);
-    const {setSortOptions} = useFilter();
+    const setSortOptions = useSorting();
 
     function handleClick() {
         let order;
 
         switch (sortOrder) {
-            case 'desc':
-                order = 'asc';
+            case sorting.DESC:
+                order = sorting.ASC;
                 break;
-            case 'asc':
+            case sorting.ASC:
                 order = null;
                 break;
             default:
-                order = 'desc';
+                order = sorting.DESC;
         }
 
         // Update local state
@@ -33,10 +34,10 @@ function Header({entry, ...props}) {
     }
 
     return (
-        <th {...props} onClick={handleClick} className={styles.root}>
+        <th {...props} onClick={handleClick} className={s.root}>
             <span>{entry.title}</span>
             {sortOrder && (
-                <i className={styles.arrow}>
+                <i className={s.arrow}>
                     {arrows[sortOrder]}
                 </i>
             )}

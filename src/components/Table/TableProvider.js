@@ -12,22 +12,25 @@ export function useTableData() {
 }
 
 /**
- * Provides sorting options and a handler to update them.
  *
- * @return {*[]}
+ * @return {(value: any) => void}
  */
-export function useFilter() {
-    return useContext(TableContext);
+export function useTagsFilter() {
+    return useContext(TableContext).setFilterTags;
+}
+
+export function useSorting() {
+    return useContext(TableContext).setSortOptions;
 }
 
 function TableProvider({data, children}) {
-    const [filterOptions, setFilterOptions] = useState(null);
-    const [sortOptions, setSortOptions]     = useState(null);
+    const [filterTags, setFilterTags] = useState([]);
+    const [sortOptions, setSortOptions] = useState(null);
 
     let processed = data;
 
-    if (null !== filterOptions && null !== filterOptions.order) {
-        processed = filterData(data, filterOptions)
+    if (filterTags.length > 0) {
+        processed = filterData(data, filterTags)
     }
 
     if (null !== sortOptions && null !== sortOptions.order) {
@@ -37,7 +40,7 @@ function TableProvider({data, children}) {
     return (
         <TableContext.Provider value={{
             data: processed,
-            setFilterOptions,
+            setFilterTags,
             sortOptions,
             setSortOptions
         }}>
@@ -49,11 +52,11 @@ function TableProvider({data, children}) {
 /**
  *
  * @param data
- * @param filterOptions
+ * @param tags
  * @return {*}
  */
-function filterData(data, filterOptions) {
-    return data;
+function filterData(data, tags) {
+    return data.filter(row => tags.every(v => row.skills.includes(v)));
 }
 
 /**

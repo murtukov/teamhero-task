@@ -6,6 +6,8 @@ import testData from "./test-data";
 import EmailField from "./components/Table/fields/EmailField";
 import TagFilter from "./components/Table/TagFilter/TagFilter";
 import TableProvider from "./components/Table/TableProvider";
+import ImageField from "./components/Table/fields/ImageField";
+import IconsField from "./components/Table/fields/IconsField";
 
 function App() {
     return (
@@ -16,10 +18,12 @@ function App() {
                 </div>
                 <div className='right-column'>
                     <Table>
-                        <StringField title='First Name' source='firstName' bold/>
+                        <ImageField title={null} source='avatar' />
+                        <StringField title='First Name' source='firstName' bold width={50}/>
                         <StringField title='Last Name' source='lastName' bold/>
                         <EmailField title='Email' source='email' />
                         <TagsField title='Skills' source='skills' />
+                        <IconsField title='Todos' source='todos'/>
                         <StringField title='Location' source='location' />
                     </Table>
                 </div>

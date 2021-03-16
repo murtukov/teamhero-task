@@ -1,14 +1,22 @@
 import React, {} from 'react';
 import Header from "./Header/Header";
 import {useTableData} from "./TableProvider";
-import styles from './styles.module.css';
+import s from './styles.module.css';
 
-function Table({children}) {
-    const data    = useTableData();
-    const columns = createMapping(children);
+function Table({children: fields}) {
+    const data = useTableData();
+
+    // Create mapping
+    const columns = fields.map(({props, type}) => ({
+        source: props.source,
+        title: props.title,
+        isSortable: true,
+        props,
+        type,
+    }));
 
     return (
-        <table className={styles.root}>
+        <table className={s.root}>
             <thead>
                 <tr>
                     {columns.map((entry, i) =>
@@ -18,7 +26,7 @@ function Table({children}) {
             </thead>
             <tbody>
                 {data.map((row, i) =>
-                    <tr className={styles.row} key={i}>
+                    <tr className={s.row} key={i}>
                         {columns.map((entry, j) =>
                             <entry.type
                                 data={row[entry.source]}
@@ -31,21 +39,6 @@ function Table({children}) {
             </tbody>
         </table>
     );
-}
-
-/**
- * @param {JSX.Element[]} elements
- */
-function createMapping(elements) {
-    return elements.map(({props, type}) => {
-        return {
-            source: props.source,
-            title: props.title,
-            isSortable: true,
-            props,
-            type,
-        }
-    });
 }
 
 export default Table;
