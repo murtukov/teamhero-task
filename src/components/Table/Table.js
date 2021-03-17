@@ -1,6 +1,6 @@
 import React, {} from 'react';
 import Header from "./Header/Header";
-import {useTableData} from "./TableProvider";
+import {useTableData} from "./hooks";
 import s from './styles.module.css';
 
 function Table({children: fields}) {

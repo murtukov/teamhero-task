@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useSorting} from "../TableProvider";
+import {useSorting} from "../hooks";
 import {sorting} from "../../../common/constants";
 import s from './styles.module.css';
 

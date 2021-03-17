@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Icon} from "@blueprintjs/core";
 import s from './styles.module.css';
-import {useTagsFilter} from "../TableProvider";
+import {useTagsFilter} from "../hooks";
 
 function TagFilter() {
     const [tags, setTags] = useState([]);

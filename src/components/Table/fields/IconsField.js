@@ -8,7 +8,7 @@ function IconsField({data}) {
             display: 'flex',
             justifyContent: 'space-between'
         }}>
-            {data.map(entry => Icons[entry])}
+            {data.map((entry, i) => <span key={i}>{Icons[entry]}</span>)}
         </Field>
     );
 }

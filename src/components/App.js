@@ -1,13 +1,13 @@
 import './App.css';
-import Table from "./components/Table/Table";
-import StringField from "./components/Table/fields/StringField";
-import TagsField from "./components/Table/fields/TagsField";
-import testData from "./test-data";
-import EmailField from "./components/Table/fields/EmailField";
-import TagFilter from "./components/Table/TagFilter/TagFilter";
-import TableProvider from "./components/Table/TableProvider";
-import ImageField from "./components/Table/fields/ImageField";
-import IconsField from "./components/Table/fields/IconsField";
+import Table from "./Table/Table";
+import StringField from "./Table/fields/StringField";
+import TagsField from "./Table/fields/TagsField";
+import testData from "../test-data";
+import EmailField from "./Table/fields/EmailField";
+import TagFilter from "./Table/TagFilter/TagFilter";
+import TableProvider from "./Table/TableProvider";
+import ImageField from "./Table/fields/ImageField";
+import IconsField from "./Table/fields/IconsField";
 
 function App() {
     return (
@@ -19,7 +19,7 @@ function App() {
                 <div className='right-column'>
                     <Table>
                         <ImageField title={null} source='avatar' />
-                        <StringField title='First Name' source='firstName' bold width={50}/>
+                        <StringField title='First Name' source='firstName' bold/>
                         <StringField title='Last Name' source='lastName' bold/>
                         <EmailField title='Email' source='email' />
                         <TagsField title='Skills' source='skills' />
